@@ -1,0 +1,31 @@
+author: Nuno Aguiar
+scripts:
+  preerase: ''
+  posterase: ''
+  preinstall: ''
+  postinstall: ''
+keywords:
+  - templates
+  - samples
+  - openaf
+  - ojob
+bugs:
+  url: 'https://github.com/OpenAF/openaf-templates/issues'
+repository:
+  type: http
+  url: 'https://openaf.io/opacks/OpenAF-templates.opack'
+description: OpenAF and oJob templates for faster scripting and job creation.
+name: OpenAF-templates
+main: ''
+mainJob: ''
+license: 'https://github.com/OpenAF/openaf-templates/blob/master/LICENSE'
+version: '20180925'
+dependencies:
+  OpenAF: '>=20180823'
+files:
+  - .package.yaml
+  - LICENSE
+  - README.md
+filesHash:
+  LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
+  README.md: 82db599643e86c744769b0b0fee5d1aa548203c1
