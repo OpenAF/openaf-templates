@@ -1,0 +1,95 @@
+# Template          : Watchdog to ensure processes are running and bark me back on Slack
+# Author            : Nuno Aguiar
+# How to run        : ojob watchDogBarkOnSlack.yaml (in crontab every x minutes)
+# oPack dependencies: latest ojob-common; latest notifications;
+
+include:
+  - oJobWatchDog.yaml
+  - notificationsSlack.yaml
+
+ojob:
+  logToFile   :
+    logFolder            : /my/dir/watchdog.logs
+    HKhowLongAgoInMinutes: 10080                  # keep logs for 7 days
+    setLogOff            : true
+  logToConsole: false
+  logJobs     : false
+  logArgs     : false
+  unique      :
+    pidFile     : /my/dir/watchdog.pid
+    killPrevious: true
+
+todo:
+  - Watchdog for process A
+  #- Watchdog for process B
+
+jobs:
+  - name: Bark via Slack
+    args:
+      webHookURL: https://hooks.slack.com/services/ABCDE/FGHIJ/abc123
+    exec: |
+      var dogmsg = "*" + args.nameOfDog + "* ";
+      if (args.__watchdog.phase == "stop" || args.__watchdog.phase == "start") {
+        if (args.__watchdog.phase == "stop") args.message = dogmsg + " stopping...\n";
+        if (args.__watchdog.phase == "start") args.message = dogmsg + " starting...\n";
+        if (args.__watchdog.checks.pid) args.message += "_due to missing process for pid_";
+        if (args.__watchdog.checks.custom) args.message += "_due to fail on custom validation_";
+        if (args.__watchdog.checks.logs.lines.length > 0) args.message += "_due to detected messages on log_";
+
+        oJobRunJob("Send Slack", args);
+      }
+
+  - name: Watchdog for process A
+    to  :
+      - oJob WatchDog
+    args:
+      nameOfDog   : Process A dog
+      quiet       : false
+      jobToNotify : Bark via Slack
+      cmdToStart  : "/usr/bin/java -Xmx64m /my/processes/A/start.sh"
+      workDirStart: /my/processes/A
+
+      checks      :
+        pid   :
+          file  : /my/processes/A/a.pid
+
+        log   :
+          folder  : /my/processes/A/log
+          fileRE  : "A-.+\.log"
+          histFile: /my/dir/.watchdog.A.history  # where to keep track of what was previously saw on the log file
+          stringRE:
+            - java\.lang\.OutOfMemory
+
+        custom:
+          exec: |
+            try {
+              // my custom code to check if A is working
+              return true;
+            } catch(e) {
+              logErr("Error: " + String(e));
+              return false;
+            }
+
+  #- name: Watchdog for process B
+  #  to  :
+  #    - oJob WatchDog
+  #  args:
+  #    nameOfDog   : Process B dog
+  #    quiet       : false
+  #    #jobToNotify : Call someone
+  #    cmdToStart  : "/usr/bin/java -Xmx64m /my/processes/B/start.sh"
+  #    workDirStart: /my/processes/B
+  #
+  #    checks      :
+  #      pid   :
+  #        file  : /my/processes/B/b.pid
+  #
+  #      custom:
+  #        exec: |
+  #          try {
+  #            // my custom code to check if B is working
+  #            return true;
+  #          } catch(e) {
+  #            logErr("Error: " + String(e));
+  #            return false;
+  #          }            
