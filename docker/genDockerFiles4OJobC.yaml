@@ -1,0 +1,45 @@
+todo:
+  - Generate Dockerfile
+  - Generate sample main.yaml
+  - Display instructions
+
+ojob:
+  logToConsole: false
+
+jobs:
+  - name: Generate Dockerfile
+    exec: |
+      print("Generating Dockerfile...");
+
+      var lines = [];
+      lines.push("FROM openaf/openaf-ojobc:latest");
+      lines.push("COPY main.yaml /openaf/main.yaml");
+
+      io.writeFileAsArray("Dockerfile", lines);
+
+  - name: Generate sample main.yaml
+    exec: |
+      print("Generating sample main.yaml..."); 
+ 
+      var oj = {
+         ojob: {
+            daemon: true,
+            logToConsole: false
+         },
+         jobs: [{
+            name: "Hello world",
+            type: "periodic",
+            typeArgs: {
+               cron: "*/1 * * * * *"
+            },
+            exec: "print(\"Hello world, it's \" + new Date());"          
+         }],
+         todo: [
+            "Hello world"
+         ]
+      };
+      io.writeFileYAML("main.yaml", oj); 
+ 
+  - name: Display instructions
+    exec: |
+      print("Change the main.yaml ojob file and build using: 'docker build -t myjob:latest .'");     

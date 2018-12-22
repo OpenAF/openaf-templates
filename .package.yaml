@@ -24,6 +24,13 @@ dependencies:
   OpenAF: '>=20180823'
 files:
   - .package.yaml
+  - docker/genDockerFiles4OJobC.yaml
+  - docker/oJob/Dockerfile
+  - docker/oJob/main.yaml
+  - docker/oJobC/Dockerfile
+  - docker/oJobC/main.yaml
+  - docker/openaf/Dockerfile
+  - docker/openaf-console/Dockerfile
   - LICENSE
   - ojobs/restServices/restServices.yaml
   - ojobs/restServices/restServicesLoggingToES.yaml
@@ -32,10 +39,17 @@ files:
   - ojobs/watchdog/watchDogBarkOnSlack.yaml
   - README.md
 filesHash:
+  docker/genDockerFiles4OJobC.yaml: cee1ac1721b5d4d527dda019eecf708f78ed3dd4
+  docker/oJob/Dockerfile: 81d1d6c64495426d8bc9224c7eb362202c7bccae
+  docker/oJob/main.yaml: b7bbeaf7700b2ea11a0b6d1e631c5ee0cd42b0b6
+  docker/oJobC/Dockerfile: 80ca9f44da56b1d1fbe32a3d7f5f7d17c284da87
+  docker/oJobC/main.yaml: b7bbeaf7700b2ea11a0b6d1e631c5ee0cd42b0b6
+  docker/openaf/Dockerfile: d1083c17dae1d6e7f5e23732ebba3576ca8e3c61
+  docker/openaf-console/Dockerfile: 8297edb6377ab020d321584290752d89634d57cc
   LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
   ojobs/restServices/restServices.yaml: dde947671a74f3aa245daf59eef6ba87885716c9
   ojobs/restServices/restServicesLoggingToES.yaml: c0c119db077951cdc230c8bc3483c416047785fa
   ojobs/watchdog/watchdog.yaml: ff18fb17ae2a9597928b95a15fdeb21b40d2bfd2
   ojobs/watchdog/watchDogBarkAndLogToES.yaml: 34dd0ab18898ad665b414e11ddd211c251c41ea8
   ojobs/watchdog/watchDogBarkOnSlack.yaml: edc7ce28bd7889f32e612d42e1208d5b3ce605f4
-  README.md: f329795690affff3342a25fd53b1ac42398d3704
+  README.md: f08b1b2599ece0ac50bcc4b55eb4c6198b9d385b
