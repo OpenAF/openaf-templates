@@ -19,7 +19,7 @@ name: OpenAF-templates
 main: ''
 mainJob: ''
 license: 'https://github.com/OpenAF/openaf-templates/blob/master/LICENSE'
-version: '20181214'
+version: '20181221'
 dependencies:
   OpenAF: '>=20180823'
 files:
@@ -35,7 +35,7 @@ filesHash:
   LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
   ojobs/restServices/restServices.yaml: dde947671a74f3aa245daf59eef6ba87885716c9
   ojobs/restServices/restServicesLoggingToES.yaml: c0c119db077951cdc230c8bc3483c416047785fa
-  ojobs/watchdog/watchdog.yaml: 86b5972fb054e34e730374fdb9538fd97a232f28
-  ojobs/watchdog/watchDogBarkAndLogToES.yaml: 460bfbd709b34064d4a31473f76d0469461da14b
-  ojobs/watchdog/watchDogBarkOnSlack.yaml: 5d334ab24aeab1243be9f733be2db4eccd669774
+  ojobs/watchdog/watchdog.yaml: ff18fb17ae2a9597928b95a15fdeb21b40d2bfd2
+  ojobs/watchdog/watchDogBarkAndLogToES.yaml: 34dd0ab18898ad665b414e11ddd211c251c41ea8
+  ojobs/watchdog/watchDogBarkOnSlack.yaml: edc7ce28bd7889f32e612d42e1208d5b3ce605f4
   README.md: f329795690affff3342a25fd53b1ac42398d3704

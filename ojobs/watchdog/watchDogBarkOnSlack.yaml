@@ -18,6 +18,9 @@ ojob:
   unique      :
     pidFile     : /my/dir/watchdog.pid
     killPrevious: true
+  checkStall  :
+    everySeconds    : 1
+    killAfterSeconds: 60    
 
 todo:
   - Watchdog for process A
