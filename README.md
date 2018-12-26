@@ -8,6 +8,10 @@
   * [REST services server logging to ElasticSearch](ojobs/restServices/restServicesLoggingToES.yaml)
   * [REST services server logging to filesystem](ojobs/restServices/restServicesWithLogs.yaml)
 
+### HTTP Simple server
+
+  * [Simple HTTP server](ojobs/httpd/httpd.yaml)
+
 ### WatchDog
 
   * [Quick watchdog to ensure processes are running](ojobs/watchdog/watchdog.yaml)
