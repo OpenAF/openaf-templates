@@ -25,6 +25,7 @@ jobs:
          ojob: {
             daemon: true,
             logToConsole: false
+            argsFromEnvs: true
          },
          jobs: [{
             name: "Hello world",
