@@ -24,4 +24,5 @@
   * [Generate the main openaf docker container](docker/openaf)
   * [Generate an openaf-console docker container](docker/openaf-console)
   * [Generate an oJob docker container](docker/oJob)
-  * [Generate a oJob + ojob-common docker container](docker/oJobC) 
+  * [Generate a oJob + ojob-common docker container](docker/oJobC)
+  * [Generate a nAttrmon docker container](docker/nAttrMon)
