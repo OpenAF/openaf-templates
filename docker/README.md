@@ -1,40 +1,8 @@
 # Docker containers
 
-## Build an openaf container
+## OpenAF docker containers
 
-You can build it directly by executing:
-
-````bash
-docker build -t openaf/openaf https://github.com/OpenAF/openaf-templates.git#:docker/openaf
-````
-
-## Build an openaf-console container
-
-You can build it directly by executing:
-
-````bash
-docker build -t openaf/openaf-console https://github.com/OpenAF/openaf-templates.git#:docker/openaf-console
-````
-
-## Build an ojob container
-
-You can build it directly by executing:
-
-````bash
-docker build -t openaf/openaf-ojob https://github.com/OpenAF/openaf-templates.git#:docker/oJob
-````
-
-You should copy a new main.yaml file into /openaf/main.yaml to execute your ojob.
-
-## Build an ojob + ojob-common container
-
-You can build it directly by executing:
-
-````bash
-docker build -t openaf/openaf-ojobc https://github.com/OpenAF/openaf-templates.git#:docker/oJobC
-````
-
-You should copy a new main.yaml file into /openaf/main.yaml to execute your ojob.
+You can check more on OpenAF docker containers in https://github.com/OpenAF/openaf-dockers.
 
 ## Generating my custom ojobc container
 
