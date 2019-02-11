@@ -8,7 +8,7 @@
 
 ### GIT
 
-  * [Just copy files from a GIT repository without the corresponding git data](git/copy4GIT.yaml)
+  * [Just copy files from a GIT repository without the corresponding git data](ojobs/git/copy4GIT.yaml)
 
 ### REST Services
 
