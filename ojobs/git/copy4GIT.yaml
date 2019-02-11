@@ -1,0 +1,49 @@
+# Author     : Nuno Aguiar
+# How to run : ojob copy4GIT.yaml COPY4GIT_TARGET=/some/dir/data COPY4GIT_URL=https://github.com/openaf/openaf.git
+
+# Other variables: COPY4GIT_TEMP, COPY4GIT_BRANCH, COPY4GIT_USER, COPY4GIT_PASS
+
+ojob:
+  argsFromEnvs: true
+  logToConsole: false
+
+todo:
+  - name: Init
+  - name: Copy repository
+
+###########################################################
+# The code
+
+jobs:
+  # Initialize global variables
+  - name: Init
+    exec: |
+      global.target = _$(args.COPY4GIT_TARGET).default("/data");
+      global.giturl = _$(args.COPY4GIT_GITURL).$_("You need to provide a COPY4GIT_GITURL.");
+      global.temp   = _$(args.COPY4GIT_TEMP).default(global.target + ".tmp");
+      log("Checking temp and target folders...");
+      io.mkdir(global.target);
+      io.mkdir(global.temp);
+      if (io.fileExists(global.temp + "/.git")) {
+        logErr("The temp folder can't have an active GIT repository.");
+        throw "The temp folder can't have an active GIT repository.";
+      }
+  
+  # Copy repository
+  - name: Copy repository
+    deps:
+      - Init
+    exec: |
+      plugin("GIT");
+      try {
+        var git = new GIT();
+        log("Retriving '" + global.giturl + "' to '" + global.temp + "' temporary folder...");
+        git.clone(global.giturl, global.temp, false, void 0, global.COPY4GIT_BRANCH, global.COPY4GIT_USER, global.COPY4GIT_PASS);
+        log("Preparing target folder '" + global.target + "'...");
+        io.rm(global.target);
+        io.rm(global.temp + "/.git");
+        io.mv(global.temp, global.target);
+        log("Repository copy done.");
+      } catch(e) {
+        logErr("Problem copying repository: " + String(e));
+      }
