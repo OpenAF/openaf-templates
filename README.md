@@ -2,6 +2,10 @@
 
 ## oJobs
 
+### Automated Tests
+
+  * [Automated tests](ojobs/tests/autoTest.yaml)
+
 ### HTTP Simple server
 
   * [Simple HTTP server](ojobs/httpd/httpd.yaml)

@@ -1,0 +1,49 @@
+# Template          : Automated tests
+# Author            : Nuno Aguiar
+# How to run        : ojob autoTest.yaml
+# oPack dependencies: latest ojob-common;
+
+include:
+  - oJobTest.yaml
+
+ojob:
+  async: true
+
+todo:
+  - Test::ABC
+  #- Test::XYZ
+  - Test results
+
+################
+
+jobs:
+  #####################
+  - name: Test::Init
+    exec: |
+      args.tests = require("autoTest.js");
+
+  - name: Test::ABC
+    from: Test::Init
+    to  : oJob::Test
+    exec: args.func = args.abc;
+
+  #- name: Test::XYZ
+  #  from: Test::Init
+  #  to  : oJob::Test
+  #  exec: args.func = args.xyz;
+
+  ####################    
+  - name: Test results
+    from: oJob Test Results
+    deps:
+      - Test::ABC
+      #- Test::XYZ
+    args:
+      quiet: true
+    exec: |
+      tprint("Tests PASSED: {{pass}}/{{count}}", args.results);
+      tprint("Tests FAILED: {{fail}}/{{count}}", args.results);
+      if (args.results.fail > 0) {
+        printErr("There are failed tests.");
+        exit(-1);
+      }
