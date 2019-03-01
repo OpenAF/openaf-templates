@@ -58,7 +58,7 @@ filesHash:
   ojobs/restServices/restServices.yaml: dde947671a74f3aa245daf59eef6ba87885716c9
   ojobs/restServices/restServicesLoggingToES.yaml: c0c119db077951cdc230c8bc3483c416047785fa
   ojobs/tests/autoTest.js: 546b8649ba2e9007d1ed252015a1586987db59de
-  ojobs/tests/autoTest.yaml: e77240e05e7d4205a8b96720078349593938f92a
+  ojobs/tests/autoTest.yaml: a0b9e836db783e1c26a276e8357e5412348df160
   ojobs/watchdog/watchdog.yaml: ff18fb17ae2a9597928b95a15fdeb21b40d2bfd2
   ojobs/watchdog/watchDogBarkAndLogToES.yaml: 34dd0ab18898ad665b414e11ddd211c251c41ea8
   ojobs/watchdog/watchDogBarkOnSlack.yaml: edc7ce28bd7889f32e612d42e1208d5b3ce605f4

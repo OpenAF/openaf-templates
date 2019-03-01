@@ -24,13 +24,13 @@ jobs:
 
   - name: Test::ABC
     from: Test::Init
-    to  : oJob::Test
-    exec: args.func = args.abc;
+    to  : oJob Test
+    exec: args.func = args.tests.abc;
 
   #- name: Test::XYZ
   #  from: Test::Init
-  #  to  : oJob::Test
-  #  exec: args.func = args.xyz;
+  #  to  : oJob Test
+  #  exec: args.func = args.tests.xyz;
 
   ####################    
   - name: Test results
