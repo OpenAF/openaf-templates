@@ -1,13 +1,15 @@
 # Template          : Simple HTTP server
 # Author            : Nuno Aguiar
-# How to run        : ojob httpd.yaml
+# How to run        : ojob httpd.yaml (change /data for the folder you need)
 # oPack dependencies: latest ojob-common;
 
 consts:
   # The port where the http server will be available
   port  : &PORT   8080
   # Where the pid file will be located
-  piddir: &PIDDIR /some/dir/httpd.pid
+  piddir: &PIDDIR httpd.pid
+  # What folder to expose
+  folder: &FOLDER .
 
 ojob:
   daemon: true
@@ -37,7 +39,7 @@ jobs:
     args: 
       uri       : /
       port      : *PORT
-      execURI   : "return ow.server.httpd.replyFile(server, '/data', '/', request.uri);"
+      execURI   : "return ow.server.httpd.replyFile(server, (isDef(args.consts) ? args.consts.folder : '/data'), '/', request.uri);"
 
   # Provides a file browser
   - name: Prepare my file browser
@@ -45,7 +47,7 @@ jobs:
     args: 
       uri       : /browse
       port      : *PORT
-      path      : /data
+      path      : *FOLDER
 
   ## What to answer to requests to /docs
   #- name: Prepare my docs
