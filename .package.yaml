@@ -19,7 +19,7 @@ name: OpenAF-templates
 main: ''
 mainJob: ''
 license: 'https://github.com/OpenAF/openaf-templates/blob/master/LICENSE'
-version: '20190302'
+version: '20190306'
 dependencies:
   OpenAF: '>=20181001'
   oJob-common: '>=20190302'
@@ -55,7 +55,7 @@ filesHash:
   docker/README.md: 0e944cfc09f81bccc2eb8952b1595b581402870d
   LICENSE: 7df059597099bb7dcf25d2a9aedfaf4465f72d8d
   ojobs/git/copy4GIT.yaml: a1533413e490b0c604b4b95523d977aa4e6ae26a
-  ojobs/httpd/httpd.yaml: db6e08b64a9216fd8617f29f8de89dcea4a5165e
+  ojobs/httpd/httpd.yaml: 7b417c1e2d041bc641a9a96954a31c224b90ae1e
   ojobs/restServices/restServices.yaml: dde947671a74f3aa245daf59eef6ba87885716c9
   ojobs/restServices/restServicesLoggingToES.yaml: c0c119db077951cdc230c8bc3483c416047785fa
   ojobs/tests/autoTest.js: 546b8649ba2e9007d1ed252015a1586987db59de

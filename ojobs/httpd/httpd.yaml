@@ -3,7 +3,7 @@
 # How to run        : ojob httpd.yaml (change /data for the folder you need)
 # oPack dependencies: latest ojob-common;
 
-consts:
+init:
   # The port where the http server will be available
   port  : &PORT   8080
   # Where the pid file will be located
@@ -23,7 +23,8 @@ include:
 todo:
   - name: HTTP Start Server
     args:
-      port: *PORT
+      port   : *PORT
+      mapLibs: true
 
   - name: Prepare my file browser
   - name: Prepare default
@@ -39,7 +40,9 @@ jobs:
     args: 
       uri       : /
       port      : *PORT
-      execURI   : "return ow.server.httpd.replyFile(server, (isDef(args.consts) ? args.consts.folder : '/data'), '/', request.uri);"
+      execURI   : "return ow.server.httpd.replyFile(server, (isDef(global.init) ? global.init.folder : '/data'), '/', request.uri);"
+    exec: |
+      global.init = args.init;
 
   # Provides a file browser
   - name: Prepare my file browser
