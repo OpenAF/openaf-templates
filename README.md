@@ -17,6 +17,7 @@
 ### REST Services
 
   * [Simple REST services server](ojobs/restServices/restServices.yaml)
+  * [Simple current time REST service](ojobs/restServices/timeService.yaml) 
   * [REST services server logging to ElasticSearch](ojobs/restServices/restServicesLoggingToES.yaml)
   * [REST services server logging to filesystem](ojobs/restServices/restServicesWithLogs.yaml)
 
