@@ -38,6 +38,7 @@ files:
   - ojobs/httpd/httpd.yaml
   - ojobs/restServices/restServices.yaml
   - ojobs/restServices/restServicesLoggingToES.yaml
+  - ojobs/restServices/timeService.yaml
   - ojobs/tests/autoTest.js
   - ojobs/tests/autoTest.yaml
   - ojobs/watchdog/watchdog.yaml
@@ -58,9 +59,10 @@ filesHash:
   ojobs/httpd/httpd.yaml: 7b417c1e2d041bc641a9a96954a31c224b90ae1e
   ojobs/restServices/restServices.yaml: cb83f18818312bd39e9ed56bd1a24c778aebff5c
   ojobs/restServices/restServicesLoggingToES.yaml: d76e6386d50b6b4e301f9740aed483deb986bb39
+  ojobs/restServices/timeService.yaml: 6741b598707f44ad64059bc1513c1f4d0d718ce3
   ojobs/tests/autoTest.js: 546b8649ba2e9007d1ed252015a1586987db59de
   ojobs/tests/autoTest.yaml: a0b9e836db783e1c26a276e8357e5412348df160
   ojobs/watchdog/watchdog.yaml: ff18fb17ae2a9597928b95a15fdeb21b40d2bfd2
   ojobs/watchdog/watchDogBarkAndLogToES.yaml: 34dd0ab18898ad665b414e11ddd211c251c41ea8
   ojobs/watchdog/watchDogBarkOnSlack.yaml: edc7ce28bd7889f32e612d42e1208d5b3ce605f4
-  README.md: d8aa3c1b0addb77929f3c430df6d3297d962499a
+  README.md: 6759272bd765ab706147a3f71f6f4daed87d272b

@@ -1,0 +1,72 @@
+# Template          : Simple Time REST service server
+# Author            : Nuno Aguiar
+# How to run        : ojob timeService.yaml
+# oPack dependencies: latest ojob-common;
+# Test              : curl http://127.0.0.1:8090/now
+
+init:
+  # The port where the rest services will be available
+  port  : &PORT   8090
+  # Where the pid file will be located
+  piddir: &PIDDIR timeService.pid
+
+ojob:
+  daemon: true
+  unique: 
+    pidFile     : *PIDDIR
+    killPrevious: false
+
+include:
+  - oJobRest.yaml
+
+todo:
+  - name: REST Start Server
+    args:
+      port: *PORT
+
+  - name: Prepare now service
+  - name: Prepare ping service
+  - name: Prepare default
+
+###########################################################
+# The code
+
+jobs:
+  # What to answer to any uri not registered (default response)
+  - name: Prepare default
+    to  : REST Service
+    args: 
+      uri       : /
+      port      : *PORT
+      execGET   : &DEFAULT_CODE "return { result: 0 }"
+      execPOST  : *DEFAULT_CODE
+      execPUT   : *DEFAULT_CODE
+      execDELETE: *DEFAULT_CODE
+
+  # What to answer to requests to /now
+  - name: Prepare now service
+    to  : REST Service
+    args: 
+      uri       : /now
+      port      : *PORT
+      execGET   : |
+        var m = { };
+        m.datetime = new Date();
+        m.time = m.datetime.getTime(); 
+
+        return m;
+      execPOST  : *DEFAULT_CODE
+      execPUT   : *DEFAULT_CODE
+      execDELETE: *DEFAULT_CODE
+
+  # Answer to ping requests to /ping
+  - name: Prepare ping service
+    to  : REST Service
+    args:
+      uri       : /ping
+      port      : *PORT
+      execGET   : &DEFAULT_PING_CODE "var data; return (isDef(data) ? data : {});"
+      execPOST  : *DEFAULT_PING_CODE 
+      execPUT   : *DEFAULT_PING_CODE
+      execDELETE: *DEFAULT_PING_CODE
+      
