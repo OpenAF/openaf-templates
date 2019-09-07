@@ -11,6 +11,8 @@ consts:
 
 ojob:
   daemon: true
+  opacks:
+    - oJob-common  
   unique: 
     pidFile     : *PIDDIR
     killPrevious: false
