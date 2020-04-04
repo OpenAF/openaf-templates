@@ -62,7 +62,7 @@ filesHash:
   ojobs/watchdog/watchDogBarkOnSlack.yaml: edc7ce28bd7889f32e612d42e1208d5b3ce605f4
   ojobs/watchdog/watchdog.yaml: ff18fb17ae2a9597928b95a15fdeb21b40d2bfd2
   ojobs/watchdog/watchDogBarkAndLogToES.yaml: 34dd0ab18898ad665b414e11ddd211c251c41ea8
-  ojobs/httpd/easyHTTPd.yaml: 283f91b1cfed2badb550e2c99ea6092aec014b37
+  ojobs/httpd/easyHTTPd.yaml: f3c3cc6c4a627bdd97c05e8bd466f38f525fa5ff
   ojobs/httpd/httpd.yaml: 7b417c1e2d041bc641a9a96954a31c224b90ae1e
   ojobs/git/copy4GIT.yaml: a1533413e490b0c604b4b95523d977aa4e6ae26a
   ojobs/restServices/timeService.yaml: 6741b598707f44ad64059bc1513c1f4d0d718ce3
