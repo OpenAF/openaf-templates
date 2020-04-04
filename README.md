@@ -9,6 +9,7 @@
 ### HTTP Simple server
 
   * [Simple HTTP server](ojobs/httpd/httpd.yaml)
+  * [Easy HTTP server](ojobs/httpd/easyHTTPd.yaml) 
 
 ### GIT
 

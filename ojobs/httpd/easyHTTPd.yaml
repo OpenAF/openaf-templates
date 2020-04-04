@@ -1,0 +1,35 @@
+# Template          : Easy HTTP server
+# Author            : Nuno Aguiar
+# How to run        : ojob easyHTTPd.yaml 
+# oPack dependencies: latest ojob-common;
+
+init:
+  port: &PORT 8888
+  path: &PATH "../../"
+  uri : &URI  "/"
+  pid : &PID  easyHTTPd.pid
+
+ojob:
+  daemon    : true
+  sequential: true
+  opacks    :
+    - oJob-common
+  unique    :
+    pidFile     : *PID
+    killPrevious: false
+
+include:
+  - oJobHTTPd.yaml
+
+todo:
+
+  - name: HTTP Start Server
+    args: 
+      port   : *PORT
+      mapLibs: true
+
+  - name: HTTP File Browse
+    args: 
+      port   : *PORT
+      path   : *PATH
+      uri    : *URI
