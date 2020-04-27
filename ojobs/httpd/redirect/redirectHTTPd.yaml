@@ -8,6 +8,7 @@ init:
   uri    : &URI  "/"
   pid    : &PID  redirectHTTPd.pid
   default: https://openaf.io
+  auditT : "AUDIT HTTP | {{method}} {{uri}} ({{header.remote-addr}}; {{header.user-agent}})"
   list   :
     "/google"          : https://google.com
     "/openaf"          : https://openaf.io
@@ -41,6 +42,9 @@ jobs:
     to     : HTTP Service
     args   :
       execURI: |
+        var tmpl = global.init.auditT;
+        tlog(tmpl, request);
+
         if (isDef(global.init.list[request.uri])) {
           return ow.server.httpd.replyRedirect(server, global.init.list[request.uri], {});
         } else {
