@@ -19,7 +19,7 @@ name: OpenAF-templates
 main: ''
 mainJob: ''
 license: 'https://github.com/OpenAF/openaf-templates/blob/master/LICENSE'
-version: '20200403'
+version: '20200426'
 dependencies:
   OpenAF: '>=20200329'
   oJob-common: '>=20191229'
@@ -41,7 +41,9 @@ files:
   - ojobs/watchdog/watchdog.yaml
   - ojobs/watchdog/watchDogBarkAndLogToES.yaml
   - ojobs/httpd/easyHTTPd.yaml
+  - ojobs/httpd/easyHTTPSd.yaml
   - ojobs/httpd/httpd.yaml
+  - ojobs/httpd/redirect/redirectHTTPd.yaml
   - ojobs/git/copy4GIT.yaml
   - ojobs/restServices/timeService.yaml
   - ojobs/restServices/restServices.yaml
@@ -63,7 +65,9 @@ filesHash:
   ojobs/watchdog/watchdog.yaml: ff18fb17ae2a9597928b95a15fdeb21b40d2bfd2
   ojobs/watchdog/watchDogBarkAndLogToES.yaml: 34dd0ab18898ad665b414e11ddd211c251c41ea8
   ojobs/httpd/easyHTTPd.yaml: f3c3cc6c4a627bdd97c05e8bd466f38f525fa5ff
+  ojobs/httpd/easyHTTPSd.yaml: 5575d6265f48ae7810a9211158ae0a9a45fa3e08
   ojobs/httpd/httpd.yaml: 7b417c1e2d041bc641a9a96954a31c224b90ae1e
+  ojobs/httpd/redirect/redirectHTTPd.yaml: b09583630c4c484e0d0a7513ded264d3a0e5b580
   ojobs/git/copy4GIT.yaml: a1533413e490b0c604b4b95523d977aa4e6ae26a
   ojobs/restServices/timeService.yaml: 6741b598707f44ad64059bc1513c1f4d0d718ce3
   ojobs/restServices/restServices.yaml: cb83f18818312bd39e9ed56bd1a24c778aebff5c

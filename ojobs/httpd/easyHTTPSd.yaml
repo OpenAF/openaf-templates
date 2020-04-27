@@ -1,0 +1,63 @@
+# Template          : Easy HTTPS server
+# Author            : Nuno Aguiar
+# How to run        : ojob easyHTTPSd.yaml 
+# oPack dependencies: latest ojob-common;
+
+init:
+  port: &PORT 8888
+  path: &PATH "."
+  uri : &URI  "/"
+  pid : &PID  easyHTTPSd.pid
+  keyf: &KEYF easyHTTPS.jks
+  keys: &KEYS 4096
+  keyv: &KEYV 1440    # minutes
+  keyp: &KEYP easyHTTPS
+
+ojob:
+  daemon    : true
+  opacks    :
+    - oJob-common
+  unique    :
+    pidFile     : *PID
+    killPrevious: false
+
+include:
+  - oJobHTTPd.yaml
+
+jobs:
+  # -----------------
+  - name: Prepare SSL
+    exec: |
+      _$(args.CN, "CN").$_("Please provide a CN=hostname or CN=ip.address to generate a SSL certificate");
+      var valid = Number(_$(args.VALID, "VALID").default(args.init.keyv)) * 60 * 1000;
+      var keys = Number(_$(args.KEYS, "KEYS").default(args.init.keys));
+
+      ow.loadJava();
+      var c = new ow.java.cipher();
+      log("Generating temporary self-signed SSL certificate of " + args.CN + " valid for " + valid + " minutes with " + keys + " key size...");
+      var kp = c.genKeyPair(keys);
+      var cert = c.genCert("cn=" + args.CN, kp.publicKey, kp.privateKey, new Date(now() + valid), void 0, args.init.keyf, args.init.keyp);
+
+  # -----------------------
+  - name: Clean Key on exit
+    type: shutdown
+    exec: |
+      log("Cleaning " + args.init.keyf + "...");
+      io.rm(args.init.keyf);
+
+todo:
+  - Clean Key on exit
+  - Prepare SSL
+
+  - name: HTTP Start Server
+    args: 
+      port    : *PORT
+      keystore: *KEYF
+      pass    : *KEYP
+      mapLibs : true
+
+  - name: HTTP File Browse
+    args:
+      port   : *PORT
+      path   : *PATH
+      uri    : *URI
