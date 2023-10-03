@@ -1,5 +1,9 @@
 # openaf-templates
 
+**October 2023: Most of these examples have now moved either to [oJob.io](https://github.com/OpenAF/oJob.io) or to [OpenAF docs](https://docs.openaf.io).**
+
+---
+
 ## oJobs
 
 ### Automated Tests
